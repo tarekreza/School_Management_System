@@ -31,4 +31,24 @@ class UserController extends Controller
         $data->save();
         return redirect()->route('user.view');
     }
+    public function UserEdit($id)
+    {
+        $editData = User::find($id);
+        return view('backend.user.edit_user',compact('editData'));
+    }
+    public function UserUpdate(Request $request, $id)
+    {
+        $data = User::find($id);
+        $data->usertype = $request->usertype;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->save();
+        return redirect()->route('user.view');
+    }
+    public function UserDelete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back();
+    }
 }
