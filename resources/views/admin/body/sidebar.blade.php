@@ -76,6 +76,8 @@ $route = Route::current()->getName();
                                 class="ti-more"></i>Student Year</a></li>
                     <li class="{{ $route == 'student.group.view' ? 'active' : '' }}"><a href="{{ route('student.group.view') }}"><i
                                 class="ti-more"></i>Student Group</a></li>
+                    <li class="{{ $route == 'student.shift.view' ? 'active' : '' }}"><a href="{{ route('student.shift.view') }}"><i
+                                class="ti-more"></i>Student Shift</a></li>
                 </ul>
             </li>
             {{-- End Setup Management --}}
