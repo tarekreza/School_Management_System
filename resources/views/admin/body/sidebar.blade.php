@@ -54,8 +54,8 @@ $route = Route::current()->getName();
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $route == 'profile.view' ? 'active' : '' }}"><a href="{{ route('profile.view') }}"><i
-                                class="ti-more"></i>Your Profile</a></li>
+                    <li class="{{ $route == 'profile.view' ? 'active' : '' }}"><a
+                            href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
                     <li class="{{ $route == 'password.view' ? 'active' : '' }}"><a
                             href="{{ route('password.view') }}"><i class="ti-more"></i>Change Password</a></li>
                 </ul>
@@ -70,18 +70,20 @@ $route = Route::current()->getName();
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $route == 'student.class.view' ? 'active' : '' }}"><a href="{{ route('student.class.view') }}"><i
-                                class="ti-more"></i>Student Class</a></li>
-                    <li class="{{ $route == 'student.year.view' ? 'active' : '' }}"><a href="{{ route('student.year.view') }}"><i
-                                class="ti-more"></i>Student Year</a></li>
-                    <li class="{{ $route == 'student.group.view' ? 'active' : '' }}"><a href="{{ route('student.group.view') }}"><i
-                                class="ti-more"></i>Student Group</a></li>
-                    <li class="{{ $route == 'student.shift.view' ? 'active' : '' }}"><a href="{{ route('student.shift.view') }}"><i
-                                class="ti-more"></i>Student Shift</a></li>
-                    <li class="{{ $route == 'fee.category.view' ? 'active' : '' }}"><a href="{{ route('fee.category.view') }}"><i
-                                class="ti-more"></i>Fee Category</a></li>
-                    <li class="{{ $route == 'fee.amount.view' ? 'active' : '' }}"><a href="{{ route('fee.amount.view') }}"><i
-                                class="ti-more"></i>Fee Category Amount </a></li>
+                    <li class="{{ $route == 'student.class.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.class.view') }}"><i class="ti-more"></i>Student Class</a></li>
+                    <li class="{{ $route == 'student.year.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.year.view') }}"><i class="ti-more"></i>Student Year</a></li>
+                    <li class="{{ $route == 'student.group.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.group.view') }}"><i class="ti-more"></i>Student Group</a></li>
+                    <li class="{{ $route == 'student.shift.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.shift.view') }}"><i class="ti-more"></i>Student Shift</a></li>
+                    <li class="{{ $route == 'fee.category.view' ? 'active' : '' }}"><a
+                            href="{{ route('fee.category.view') }}"><i class="ti-more"></i>Fee Category</a></li>
+                    <li class="{{ $route == 'fee.amount.view' ? 'active' : '' }}"><a
+                            href="{{ route('fee.amount.view') }}"><i class="ti-more"></i>Fee Category Amount </a></li>
+                    <li class="{{ $route == 'exam.type.view' ? 'active' : '' }}"><a
+                            href="{{ route('exam.type.view') }}"><i class="ti-more"></i>Exam Type </a></li>
                 </ul>
             </li>
             {{-- End Setup Management --}}
