@@ -8,7 +8,7 @@ $route = Route::current()->getName();
 
         <div class="user-profile">
             <div class="ulogo">
-                <a href="index.html">
+                <a href="{{ route('dashboard') }}">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
                         <img src="{{ asset('backend/images/logo-dark.png') }}" alt="">
@@ -78,6 +78,10 @@ $route = Route::current()->getName();
                                 class="ti-more"></i>Student Group</a></li>
                     <li class="{{ $route == 'student.shift.view' ? 'active' : '' }}"><a href="{{ route('student.shift.view') }}"><i
                                 class="ti-more"></i>Student Shift</a></li>
+                    <li class="{{ $route == 'fee.category.view' ? 'active' : '' }}"><a href="{{ route('fee.category.view') }}"><i
+                                class="ti-more"></i>Fee Category</a></li>
+                    <li class="{{ $route == 'fee.amount.view' ? 'active' : '' }}"><a href="{{ route('fee.amount.view') }}"><i
+                                class="ti-more"></i>Fee Category Amount </a></li>
                 </ul>
             </li>
             {{-- End Setup Management --}}

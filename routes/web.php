@@ -1,14 +1,16 @@
 <?php
 
+use App\Models\StudentYear;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\FeeAmountController;
+use App\Http\Controllers\Backend\Setup\FeeCategoryController;
+use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentgroupController;
 use App\Http\Controllers\Backend\Setup\StudentshiftController;
-use App\Http\Controllers\Backend\Setup\StudentYearController;
-use App\Http\Controllers\Backend\UserController;
-use App\Models\StudentYear;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,4 +88,18 @@ Route::prefix('setups')->group(function(){
     Route::get('student/shift/edit/{id}',[StudentshiftController::class, 'StudentShiftEdit'])->name('student.shift.edit');
     Route::post('student/shift/update/{id}',[StudentshiftController::class, 'StudentShiftUpdate'])->name('update.student.shift');
     Route::get('student/shift/delete/{id}',[StudentshiftController::class, 'StudentShiftDelete'])->name('student.shift.delete');
+    // student fee
+    Route::get('fee/category/view',[FeeCategoryController::class, 'ViewFeeCat'])->name('fee.category.view');
+    Route::get('fee/category/add',[FeeCategoryController::class, 'FeeCatAdd'])->name('fee.category.add');
+    Route::post('fee/category/store',[FeeCategoryController::class, 'FeeCatStore'])->name('store.fee.category');
+    Route::get('fee/category/edit/{id}',[FeeCategoryController::class, 'FeeCatEdit'])->name('fee.category.edit');
+    Route::post('fee/category/update/{id}',[FeeCategoryController::class, 'FeeCatUpdate'])->name('update.fee.category');
+    Route::get('fee/category/delete/{id}',[FeeCategoryController::class, 'FeeCatDelete'])->name('fee.category.delete');
+        // fee category amount
+        Route::get('fee/amount/view',[FeeAmountController::class, 'ViewFeeAmount'])->name('fee.amount.view');
+        Route::get('fee/amount/add',[FeeAmountController::class, 'AddFeeAmount'])->name('fee.amount.add');
+        Route::post('fee/amount/store',[FeeAmountController::class, 'StoreFeeAmount'])->name('store.fee.amount');
+        Route::get('fee/amount/edit/{id}',[FeeAmountController::class, 'EditFeeAmount'])->name('fee.amount.edit');
+        Route::post('fee/amount/update/{id}',[FeeAmountController::class, 'UpdateFeeAmount'])->name('update.fee.amount');
+        Route::get('fee/amount/details/{id}',[FeeAmountController::class, 'DetailsFeeAmount'])->name('fee.amount.details');
 });
