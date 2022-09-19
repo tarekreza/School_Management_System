@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -13,17 +14,6 @@ use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentgroupController;
 use App\Http\Controllers\Backend\Setup\StudentshiftController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('auth.login');
@@ -38,8 +28,6 @@ Route::middleware([
         return view('admin.index');
     })->name('dashboard');
 });
-
-
 Route::get('admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 // User list & add user
 Route::prefix('users')->group(function () {
@@ -118,4 +106,11 @@ Route::prefix('setups')->group(function () {
     Route::get('school/subject/edit/{id}', [SchoolSubjectController::class, 'SchoolSubjectEdit'])->name('school.subject.edit');
     Route::post('school/subject/update/{id}', [SchoolSubjectController::class, 'SchoolSubjectUpdate'])->name('update.school.subject');
     Route::get('school/subject/delete/{id}', [SchoolSubjectController::class, 'SchoolSubjectDelete'])->name('school.subject.delete');
+        // Assign subject
+        Route::get('assign/subject/view', [AssignSubjectController::class, 'ViewAssignSubject'])->name('assign.subject.view');
+        Route::get('assign/subject/add', [AssignSubjectController::class, 'AddAssignSubject'])->name('assign.subject.add');
+        Route::post('assign/subject/store', [AssignSubjectController::class, 'StoreAssignSubject'])->name('store.assign.subject');
+        Route::get('assign/subject/edit/{id}', [AssignSubjectController::class, 'EditAssignSubject'])->name('assign.subject.edit');
+        Route::post('assign/subject/update/{id}', [AssignSubjectController::class, 'UpdateAssignSubject'])->name('update.assign.subject');
+        Route::get('assign/subject/details/{id}', [AssignSubjectController::class, 'DetailsAssignSubject'])->name('assign.subject.details');
 });
