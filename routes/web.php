@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentgroupController;
 use App\Http\Controllers\Backend\Setup\StudentshiftController;
+use App\Http\Controllers\Backend\Student\StudentRegController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -122,3 +123,16 @@ Route::prefix('setups')->group(function () {
     Route::post('designation/update/{id}', [DesignationController::class, 'DesignationUpdate'])->name('update.designation');
     Route::get('designation/delete/{id}', [DesignationController::class, 'DesignationDelete'])->name('designation.delete');
 });
+// user profile and password
+Route::prefix('students')->group(function () {
+
+    Route::get('reg/view', [StudentRegController::class, 'StudentRegView'])->name('student.registration.view');
+    Route::get('registration/add', [StudentRegController::class, 'StudentRegAdd'])->name('student.registration.add');
+    Route::post('reg/store', [StudentRegController::class, 'StudentRegStore'])->name('store.student.registration');
+    Route::get('year/class/wise', [StudentRegController::class, 'StudentClassYearWise'])->name('student.year.class.wise');
+    Route::get('reg/edit/{id}', [StudentRegController::class, 'StudentRegEdit'])->name('student.registration.edit');
+    Route::post('reg/update/{id}', [StudentRegController::class, 'StudentRegUpdate'])->name('update.student.registration');
+    Route::get('reg/promotion/{id}', [StudentRegController::class, 'StudentRegPromotion'])->name('student.registration.promotion');
+    Route::post('reg/update/promotion/{id}', [StudentRegController::class, 'StudentUpdatePromotion'])->name('promotion.student.registration');
+});
+

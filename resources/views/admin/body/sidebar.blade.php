@@ -29,21 +29,23 @@ $route = Route::current()->getName();
             </li>
             {{-- end Dashboard --}}
             {{-- Manage User start --}}
-            <li class="treeview {{ $prefix == '/users' ? 'active' : '' }}">
-                <a href="#">
-                    <i data-feather="message-circle"></i>
-                    <span>Manage User</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{ $route == 'users.view' ? 'active' : '' }}"><a href="{{ route('users.view') }}"><i
-                                class="ti-more "></i>View User</a></li>
-                    <li class="{{ $route == 'users.add' ? 'active' : '' }}"><a href="{{ route('users.add') }}"><i
-                                class="ti-more"></i>Add User</a></li>
-                </ul>
-            </li>
+            @if (Auth::user()->role == 'Admin')
+                <li class="treeview {{ $prefix == '/users' ? 'active' : '' }}">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Manage User</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'users.view' ? 'active' : '' }}"><a href="{{ route('users.view') }}"><i
+                                    class="ti-more "></i>View User</a></li>
+                        <li class="{{ $route == 'users.add' ? 'active' : '' }}"><a href="{{ route('users.add') }}"><i
+                                    class="ti-more"></i>Add User</a></li>
+                    </ul>
+                </li>
+            @endif
             {{-- End Manage User --}}
             {{-- Manage Profile Start --}}
             <li class="treeview {{ $prefix == '/profile' ? 'active' : '' }}">
@@ -93,7 +95,21 @@ $route = Route::current()->getName();
                 </ul>
             </li>
             {{-- End Setup Management --}}
-
+            {{-- Student Management Start --}}
+            <li class="treeview {{ $prefix == '/students' ? 'active' : '' }}">
+                <a href="#">
+                    <i data-feather="mail"></i> <span>Student Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'student.registration.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.registration.view') }}"><i class="ti-more"></i>Student
+                            Registration</a></li>
+                </ul>
+            </li>
+            {{-- End Student Management --}}
 
             <li class="header nav-small-cap">User Interface</li>
 
@@ -119,10 +135,10 @@ $route = Route::current()->getName();
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
             aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
         <!-- item-->
-        <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
-                class="ti-email"></i></a>
+        <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title=""
+            data-original-title="Email"><i class="ti-email"></i></a>
         <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i
-                class="ti-lock"></i></a>
+        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
+            data-original-title="Logout"><i class="ti-lock"></i></a>
     </div>
 </aside>
