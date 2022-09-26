@@ -208,6 +208,5 @@ class StudentRegController extends Controller
         $data['details'] = AssignStudent::where('student_id',$id)->first();
 	$pdf = FacadesPdf::loadView('backend.student.student_reg.student_details_pdf', $data);
 	return $pdf->stream('document.pdf');
-
     }
 }

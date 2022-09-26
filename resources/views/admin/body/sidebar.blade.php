@@ -107,6 +107,8 @@ $route = Route::current()->getName();
                     <li class="{{ $route == 'student.registration.view' ? 'active' : '' }}"><a
                             href="{{ route('student.registration.view') }}"><i class="ti-more"></i>Student
                             Registration</a></li>
+                    <li class="{{ $route == 'roll.generate.view' ? 'active' : '' }}"><a
+                            href="{{ route('roll.generate.view') }}"><i class="ti-more"></i>Roll Generator</a></li>
                 </ul>
             </li>
             {{-- End Student Management --}}
