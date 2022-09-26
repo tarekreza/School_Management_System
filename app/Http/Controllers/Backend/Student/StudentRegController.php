@@ -12,6 +12,8 @@ use App\Models\StudentYear;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use niklasravnsborg\LaravelPdf\Facades\Pdf as FacadesPdf;
+use niklasravnsborg\LaravelPdf\Pdf as LaravelPdfPdf;
 
 class StudentRegController extends Controller
 {
@@ -199,5 +201,13 @@ class StudentRegController extends Controller
             $discount_student->save();
         });
         return redirect()->route('student.registration.view');
+    }
+    public function StudentRegDetails($id)
+    {
+        // with(['student','discount'])->      ***can use this for performance***
+        $data['details'] = AssignStudent::where('student_id',$id)->first();
+	$pdf = FacadesPdf::loadView('backend.student.student_reg.student_details_pdf', $data);
+	return $pdf->stream('document.pdf');
+
     }
 }

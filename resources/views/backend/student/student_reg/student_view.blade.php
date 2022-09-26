@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
@@ -98,9 +99,11 @@
                                                         <td>{{ $value->year_id }}</td>
                                                         <td>
                                                             <a
-                                                                href="{{ route('student.registration.edit', $value->student_id) }}"class="btn btn-info">Edit</a>
-                                                            <a href="{{ route('student.registration.promotion', $value->student_id) }}"class="btn btn-danger"
-                                                                id="delete">Promotion</a>
+                                                                href="{{ route('student.registration.edit', $value->student_id) }}"class="btn btn-info"><i class="material-icons">edit</i></a>
+                                                            <a href="{{ route('student.registration.promotion', $value->student_id) }}"class="btn btn-primary"
+                                                                id="delete"><i class="material-icons">done</i></a>
+                                                                <a href="{{ route('student.registration.details', $value->student_id) }}"target="_blank"class="btn btn-danger"
+                                                                    id="delete"><i class="material-icons">visibility</i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -136,10 +139,13 @@
                                                                 style="width: 60px; " alt="User Avatar"></td>
                                                         <td>{{ $value->year_id }}</td>
                                                         <td>
+                                                            
                                                             <a
-                                                                href="{{ route('student.registration.edit', $value->student_id) }}"class="btn btn-info">Edit</a>
-                                                            <a href="{{ route('student.registration.promotion', $value->student_id) }}"class="btn btn-danger"
-                                                                id="delete">Promotion</a>
+                                                                href="{{ route('student.registration.edit', $value->student_id) }}"class="btn btn-info"><i class="material-icons">edit</i></a>
+                                                            <a href="{{ route('student.registration.promotion', $value->student_id) }}"class="btn btn-primary"
+                                                                id="delete"><i class="material-icons">done</i></a>
+                                                            <a href="{{ route('student.registration.details', $value->student_id) }}" target="_blank" class="btn btn-danger"
+                                                                id="delete"><i class="material-icons">visibility</i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
