@@ -109,6 +109,10 @@ $route = Route::current()->getName();
                             Registration</a></li>
                     <li class="{{ $route == 'roll.generate.view' ? 'active' : '' }}"><a
                             href="{{ route('roll.generate.view') }}"><i class="ti-more"></i>Roll Generator</a></li>
+                    <li class="{{ $route == 'registration.fee.view' ? 'active' : '' }}"><a
+                            href="{{ route('registration.fee.view') }}"><i class="ti-more"></i>Registration Fee</a></li>
+                    <li class="{{ $route == 'monthly.fee.view' ? 'active' : '' }}"><a
+                            href="{{ route('monthly.fee.view') }}"><i class="ti-more"></i>Monthly Fee</a></li>
                 </ul>
             </li>
             {{-- End Student Management --}}

@@ -5,18 +5,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\Setup\AssignSubjectController;
-use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
+use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
-use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentgroupController;
 use App\Http\Controllers\Backend\Setup\StudentshiftController;
+use App\Http\Controllers\Backend\Student\MonthlyFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
+use App\Http\Controllers\Backend\Setup\AssignSubjectController;
+use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
+use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -126,7 +128,7 @@ Route::prefix('setups')->group(function () {
 });
 // user profile and password
 Route::prefix('students')->group(function () {
-
+// Student Registration
     Route::get('reg/view', [StudentRegController::class, 'StudentRegView'])->name('student.registration.view');
     Route::get('registration/add', [StudentRegController::class, 'StudentRegAdd'])->name('student.registration.add');
     Route::post('reg/store', [StudentRegController::class, 'StudentRegStore'])->name('store.student.registration');
@@ -135,10 +137,17 @@ Route::prefix('students')->group(function () {
     Route::post('reg/update/{id}', [StudentRegController::class, 'StudentRegUpdate'])->name('update.student.registration');
     Route::get('reg/promotion/{id}', [StudentRegController::class, 'StudentRegPromotion'])->name('student.registration.promotion');
     Route::post('reg/update/promotion/{id}', [StudentRegController::class, 'StudentUpdatePromotion'])->name('promotion.student.registration');
-    Route::get('reg/details/{id}', [StudentRegController::class, 'StudentRegDetails]]'])->name('student.registration.details');
+    Route::get('reg/details/{id}', [StudentRegController::class, 'StudentRegDetails'])->name('student.registration.details');
     // student roll generate
     Route::get('roll/generate/view', [StudentRollController::class, 'StudentRollView'])->name('roll.generate.view');
     Route::get('reg/getstudents', [StudentRollController::class, 'GetStudents'])->name('student.registration.getstudents');
     Route::post('roll/generate/store', [StudentRollController::class, 'StudentRollStore'])->name('roll.generate.store');
+    // Registration Fee Routes 
+    Route::get('/reg/fee/view', [RegistrationFeeController::class, 'RegFeeView'])->name('registration.fee.view');
+    Route::get('/reg/fee/classwisedata', [RegistrationFeeController::class, 'RegFeeClassData'])->name('student.registration.fee.classwise.get');
+    Route::get('/reg/fee/payslip/{id}', [RegistrationFeeController::class, 'RegFeePayslip'])->name('student.registration.fee.payslip');
+    // Monthly Fee Routes 
+    Route::get('/monthly/fee/view', [MonthlyFeeController::class, 'MonthlyFeeView'])->name('monthly.fee.view');
+    Route::get('/monthly/fee/classwisedata', [MonthlyFeeController::class, 'MonthlyFeeClassData'])->name('student.monthly.fee.classwise.get');
+    Route::get('/monthly/fee/payslip', [MonthlyFeeController::class, 'MonthlyFeePayslip'])->name('student.monthly.fee.payslip');
 });
-
