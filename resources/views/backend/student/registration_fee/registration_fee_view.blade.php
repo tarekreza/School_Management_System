@@ -66,47 +66,47 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    @if (!@$search)
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
+                                    @if (isset($allData) && isset($registration_fee))
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">SL</th>
+                                                <th>Name</th>
+                                                <th>ID No</th>
+                                                <th>Roll</th>
+                                                <th>Registration Fee</th>
+                                                <th>Discount</th>
+                                                <th>Student Fee</th>
+                                                <th width="25%">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($allData as $key => $value)
                                                 <tr>
-                                                    <th width="5%">SL</th>
-                                                    <th>Name</th>
-                                                    <th>ID No</th>
-                                                    <th>Roll</th>
-                                                    <th>Registration Fee</th>
-                                                    <th>Discount</th>
-                                                    <th>Student Fee</th>
-                                                    <th width="25%">Action</th>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $value->student->name }}</td>
+                                                    <td>{{ $value->student->id_no }}</td>
+                                                    <td>{{ $value->roll }}</td>
+                                                    <td>{{ $registration_fee->amount }}</td>
+                                                    <td>{{ $value->discount->discount }}</td>
+                                                    {{-- for calculate total payable registration fee --}}
+                                                    @php
+                                                        $originalfee = $registration_fee->amount;
+                                                        $discount = $value->discount->discount;
+                                                        $discounttablefee = ($discount / 100) * $originalfee;
+                                                        $finalfee = (float) $originalfee - (float) $discounttablefee
+                                                    @endphp
+                                                    <td>
+                                                        {{ $finalfee }}
+                                                    </td>
+                                                    <td>
+                                                        <a
+                                                        href="{{ route('student.registration.fee.payslip', $value->student_id) }}" target="_blank"class="btn btn-success">Fee slip</a>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($allData as $key => $value)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $value->student->name }}</td>
-                                                        <td>{{ $value->student->id_no }}</td>
-                                                        <td>{{ $value->roll }}</td>
-                                                        <td>{{ $registration_fee->amount }}</td>
-                                                        <td>{{ $value->discount->discount }}</td>
-                                                        {{-- for calculate total payable registration fee --}}
-                                                        @php
-                                                            $originalfee = $registration_fee->amount;
-                                                            $discount = $value->discount->discount;
-                                                            $discounttablefee = ($discount / 100) * $originalfee;
-                                                            $finalfee = (float) $originalfee - (float) $discounttablefee
-                                                        @endphp
-                                                        <td>
-                                                            {{ $finalfee }}
-                                                        </td>
-                                                        <td>
-                                                            <a
-                                                                href="{{ route('student.registration.fee.payslip', $value->student_id) }}"class="btn btn-success">Fee slip</a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                     @else
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -142,7 +142,7 @@
                                                     </td>
                                                     <td>
                                                         <a
-                                                        href="{{ route('student.registration.fee.payslip', $value->student_id) }}"class="btn btn-success">Fee slip</a>
+                                                            href="{{ route('student.registration.fee.payslip', $value->student_id) }}" target="_blank"class="btn btn-success" >Fee slip</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

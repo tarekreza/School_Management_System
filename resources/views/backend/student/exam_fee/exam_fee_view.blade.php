@@ -12,10 +12,10 @@
                     <div class="col-12">
                         <div class="box bb-3 border-warning">
                             <div class="box-header">
-                                <h4 class="box-title">Student <strong>Monthly Fee</strong></h4>
+                                <h4 class="box-title">Student <strong>Exam Fee</strong></h4>
                             </div>
                             <div class="box-body">
-                                <form action="{{ route('student.monthly.fee.classwise.get') }}" method="GET">
+                                <form action="{{ route('student.exam.fee.classwise.get') }}" method="GET">
                                     <div class="row">
                                         <div class="col-md-3">
 
@@ -29,7 +29,6 @@
                                                         @foreach ($years as $year)
                                                             <option value="{{ $year->id }}">{{ $year->name }}</option>
                                                         @endforeach
-
                                                     </select>
                                                 </div>
                                             </div>
@@ -56,49 +55,15 @@
                                         <div class="col-md-3">
 
                                             <div class="form-group">
-                                                <h5>Month <span class="text-danger"> </span></h5>
+                                                <h5>Exam Type <span class="text-danger"> </span></h5>
                                                 <div class="controls">
-                                                    <select name="month" id="month" required=""
+                                                    <select name="exam_type" id="exam_type" required=""
                                                         class="form-control">
-                                                        <option value="" selected="" disabled="">Select Month
+                                                        <option value="" selected="" disabled="">Select Exam Type
                                                         </option>
-
-                                                        <option @isset($month)
-                                                            {{ ($month == 'January') ? "selected" : "" }} 
-                                                        @endisset value="January">January</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'February') ? "selected" : "" }} 
-                                                    @endisset value="February">February</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'March') ? "selected" : "" }} 
-                                                    @endisset value="March">March</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'April') ? "selected" : "" }} 
-                                                    @endisset value="April">April</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'May') ? "selected" : "" }} 
-                                                    @endisset value="May">May</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'Jun') ? "selected" : "" }} 
-                                                    @endisset value="Jun">Jun</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'July') ? "selected" : "" }} 
-                                                    @endisset value="July">July</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'August') ? "selected" : "" }} 
-                                                    @endisset value="August">August</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'September') ? "selected" : "" }} 
-                                                    @endisset value="September">September</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'October') ? "selected" : "" }} 
-                                                    @endisset value="October">October</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'November') ? "selected" : "" }} 
-                                                    @endisset value="November">November</option>
-                                                        <option @isset($month)
-                                                        {{ ($month == 'December') ? "selected" : "" }} 
-                                                    @endisset value="December">December</option>
+                                                        @foreach ($exam_types as $exam_type)
+                                                        <option value="{{ $exam_type->id }}">{{ $exam_type->name }}</option>
+                                                    @endforeach 
                                                     </select>
                                                 </div>
                                             </div>
@@ -113,7 +78,7 @@
                                 </form>
                             </div>
                             <!-- /.col -->
-                            <!--  ////////////////// monthly Fee table /////////////  -->
+                            <!--  ////////////////// exam Fee table /////////////  -->
                         </div>
                     </div>
 					<div class="col-12">
@@ -124,7 +89,7 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-									@if(isset($allData)&&isset($monthly_fee))
+									@if(isset($allData)&&isset($exam_fee))
 										
 									
 									<table id="example1" class="table table-bordered table-striped">
@@ -134,7 +99,7 @@
 			<th>Name</th>
                                                 <th>ID No</th>
                                                 <th>Roll</th>
-                                                <th>Monthly Fee</th>
+                                                <th>Exam Fee</th>
                                                 <th>Discount</th>
                                                 <th>Student Fee</th>
                                                 <th width="25%">Action</th>
@@ -147,11 +112,11 @@
                                                     <td>{{ $value->student->name }}</td>
                                                     <td>{{ $value->student->id_no }}</td>
                                                     <td>{{ $value->roll }}</td>
-                                                    <td>{{ $monthly_fee->amount }}</td>
+                                                    <td>{{ $exam_fee->amount }}</td>
                                                     <td>{{ $value->discount->discount }}</td>
                                                     {{-- for calculate total payable registration fee --}}
                                                     @php
-                                                        $originalfee = $monthly_fee->amount;
+                                                        $originalfee = $exam_fee->amount;
                                                         $discount = $value->discount->discount;
                                                         $discounttablefee = ($discount / 100) * $originalfee;
                                                         $finalfee = (float) $originalfee - (float) $discounttablefee
@@ -161,7 +126,7 @@
                                                     </td>
                                                     <td>
                                                         <a
-                                                        href="{{ route('student.monthly.fee.payslip', [$value->student_id,$month]) }}"
+                                                        href="{{ route('student.exam.fee.payslip',[$value->student_id, $exam_type->name]) }}"
                                                           target="_blank"class="btn btn-success">Fee slip</a>
                                                     </td>
                                                 </tr>
