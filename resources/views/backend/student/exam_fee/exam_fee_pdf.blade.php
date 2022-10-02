@@ -113,7 +113,7 @@
             <td>{{ $finalfee }} $</td>
         </tr>
     </table>
-    <br> <br>
+    <br>
     <i style="font-size: 10px; float: right;">Print Data : {{ date('d M Y') }}</i>
     <hr style="border: dashed 2px; width: 95%; color: #000000; margin-bottom: 50px">
     <table id="customers">
@@ -168,7 +168,7 @@
             <td>{{ $finalfee }} $</td>
         </tr>
     </table>
-    <br> <br>
+    <br>
     <i style="font-size: 10px; float: right;">Print Data : {{ date('d M Y') }}</i>
 </body>
 

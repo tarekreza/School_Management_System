@@ -47,7 +47,7 @@ class StudentRegController extends Controller
     {
         DB::transaction(function () use ($request) {
             $checkYear = StudentYear::find($request->year_id)->name;
-            $student = User::where('usertype', 'student')->orderBy('id', 'DESC')->first();
+            $student = User::where('usertype', 'Student')->orderBy('id', 'DESC')->first();
             if ($student == null) {
                 $firstReg = 0;
                 $studentId = $firstReg + 1;
@@ -59,7 +59,7 @@ class StudentRegController extends Controller
                     $id_no = '0' . $studentId;
                 }
             } else {
-                $student = User::where('usertype', 'student')->orderBy('id', 'DESC')->first()->id;
+                $student = User::where('usertype', 'Student')->orderBy('id', 'DESC')->first()->id;
                 $studentId = $student + 1;
                 if ($studentId < 10) {
                     $id_no = '000' . $studentId;
@@ -74,7 +74,7 @@ class StudentRegController extends Controller
             $code = rand(0000, 9999);
             $user->id_no = $final_id_no;
             $user->password = bcrypt($code);
-            $user->usertype = 'student';
+            $user->usertype = 'Student';
             $user->code = $code;
             $user->name = $request->name;
             $user->fname = $request->fname;
