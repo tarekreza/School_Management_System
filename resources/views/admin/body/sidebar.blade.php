@@ -134,6 +134,8 @@ $route = Route::current()->getName();
                             href="{{ route('employee.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
                     <li class="{{ $route == 'employee.leave.view' ? 'active' : '' }}"><a
                             href="{{ route('employee.leave.view') }}"><i class="ti-more"></i>Employee Leave</a></li>
+                    <li class="{{ $route == 'employee.attendance.view' ? 'active' : '' }}"><a
+                            href="{{ route('employee.attendance.view') }}"><i class="ti-more"></i>Employee Attendance</a></li>
                 </ul>
             </li>
             {{-- End Employee Management --}}
