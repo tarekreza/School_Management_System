@@ -110,7 +110,8 @@ $route = Route::current()->getName();
                     <li class="{{ $route == 'roll.generate.view' ? 'active' : '' }}"><a
                             href="{{ route('roll.generate.view') }}"><i class="ti-more"></i>Roll Generator</a></li>
                     <li class="{{ $route == 'registration.fee.view' ? 'active' : '' }}"><a
-                            href="{{ route('registration.fee.view') }}"><i class="ti-more"></i>Registration Fee</a></li>
+                            href="{{ route('registration.fee.view') }}"><i class="ti-more"></i>Registration Fee</a>
+                    </li>
                     <li class="{{ $route == 'monthly.fee.view' ? 'active' : '' }}"><a
                             href="{{ route('monthly.fee.view') }}"><i class="ti-more"></i>Monthly Fee</a></li>
                     <li class="{{ $route == 'exam.fee.view' ? 'active' : '' }}"><a
@@ -131,16 +132,39 @@ $route = Route::current()->getName();
                             href="{{ route('employee.registration.view') }}"><i class="ti-more"></i>Employee
                             Registration</a></li>
                     <li class="{{ $route == 'employee.salary.view' ? 'active' : '' }}"><a
-                            href="{{ route('employee.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
+                            href="{{ route('employee.salary.view') }}"><i class="ti-more"></i>Employee Salary</a>
+                    </li>
                     <li class="{{ $route == 'employee.leave.view' ? 'active' : '' }}"><a
                             href="{{ route('employee.leave.view') }}"><i class="ti-more"></i>Employee Leave</a></li>
                     <li class="{{ $route == 'employee.attendance.view' ? 'active' : '' }}"><a
-                            href="{{ route('employee.attendance.view') }}"><i class="ti-more"></i>Employee Attendance</a></li>
+                            href="{{ route('employee.attendance.view') }}"><i class="ti-more"></i>Employee
+                            Attendance</a></li>
                     <li class="{{ $route == 'employee.monthly.salary' ? 'active' : '' }}"><a
-                            href="{{ route('employee.monthly.salary') }}"><i class="ti-more"></i>Employee Monthly Salary</a></li>
+                            href="{{ route('employee.monthly.salary') }}"><i class="ti-more"></i>Employee Monthly
+                            Salary</a></li>
                 </ul>
             </li>
             {{-- End Employee Management --}}
+            {{-- Student Mark Management --}}
+            <li class="treeview {{ $prefix == '/marks' ? 'active' : '' }}">
+                <a href="#">
+                    <i data-feather="mail"></i> <span>Marks Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'marks.entry.add' ? 'active' : '' }}"><a
+                            href="{{ route('marks.entry.add') }}"><i class="ti-more"></i>Marks
+                            Entry</a></li>
+                    <li class="{{ $route == 'marks.entry.edit' ? 'active' : '' }}"><a
+                            href="{{ route('marks.entry.edit') }}"><i class="ti-more"></i>Marks
+                            Edit</a></li>
+                    <li class="{{ $route == 'marks.entry.grade' ? 'active' : '' }}"><a
+                            href="{{ route('marks.entry.grade') }}"><i class="ti-more"></i>Marks Grade</a></li>
+                </ul>
+            </li>
+            {{-- End Student Mark Management --}}
             <li class="header nav-small-cap">User Interface</li>
 
             <li class="treeview">
@@ -162,8 +186,8 @@ $route = Route::current()->getName();
 
     <div class="sidebar-footer">
         <!-- item-->
-        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
-            aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
+        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
+            data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
         <!-- item-->
         <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title=""
             data-original-title="Email"><i class="ti-email"></i></a>
