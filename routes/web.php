@@ -19,11 +19,13 @@ use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Account\StudentFeeController;
+use App\Http\Controllers\Backend\Report\AttenReportController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentgroupController;
 use App\Http\Controllers\Backend\Setup\StudentshiftController;
 use App\Http\Controllers\Backend\Student\MonthlyFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
+use App\Http\Controllers\Backend\Report\ResultReportController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
@@ -35,6 +37,8 @@ use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 
+Route::group(['middleware' => 'prevent-back-history'],function(){
+   
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -301,3 +305,5 @@ Route::prefix('reports')->group(function(){
     }); 
     
 }); /*End middleware*/
+
+});  // Prevent Back Middleare
